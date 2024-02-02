@@ -24,7 +24,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
+      
+    - name: Use Node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+          
     - name: Build Docker image
       run: docker build -t docker .
 
