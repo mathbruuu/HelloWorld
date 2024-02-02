@@ -26,7 +26,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build Docker image
-      run: docker build -t docker
+      run: docker build -t dockerFile
 
     - name: Test Docker image
-      run: docker run docker
+      run: docker run dockerFile
