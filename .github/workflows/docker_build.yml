@@ -30,24 +30,26 @@ jobs:
       with:
         node-version: 20
           
-    - name: Build Docker image
-      run: docker image build -t helloworld:latest .
+    - name: Run Docker container
+      run: docker run -d -p 8080:80 helloworld
+      id: docker-container
 
     - name: Install curl in the Docker container
-      run: docker exec -it helloworld:latest apt-get update && apt-get install -y curl
+      run: docker exec -it ${{ steps.docker-container.outputs.container_id }} apt-get update && apt-get install -y curl
 
     - name: Test Docker image
-      run: | 
-        docker run -p 8080:80 helloworld
-
+      run: |
+        echo "Waiting for the container to start..."
         sleep 10
+
+        echo "Checking HTTP response code..."
         response_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
         if [ $response_code -eq 200 ]; then
           echo "Docker container is responding successfully."
         else
-          echo "Error: Docker container did not respond as expected."
+          echo "Error: Docker container did not respond as expected. HTTP code: $response_code"
           exit 1
-        fi
+        }
 
       
 
