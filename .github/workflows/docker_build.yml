@@ -45,7 +45,9 @@ jobs:
     
     steps:
     - name: Check if container run
-      run: docker ps
+      run: |
+        docker ps
+        docker network inspect bridge
       
     - name: Test App in Container
       id: test
