@@ -36,6 +36,9 @@ jobs:
     - name: Run Docker container
       run: docker run -p 8080:80 helloworld
       id: docker-container
+      
+    - name: Show container logs
+      run: docker logs ${{ steps.docker-container.outputs.container_id }}
 
     - name: Install curl in the Docker container
       run: docker exec -it ${{ steps.docker-container.outputs.container_id }} apt-get update && apt-get install -y curl
