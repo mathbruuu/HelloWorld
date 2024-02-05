@@ -16,6 +16,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: ubuntu
+
+    services:
+      docker:
+        image: docker:20.10.10
+        ports:
+          - 8080:8080
+        options: --entrypoint "dockerd-entrypoint.sh"
     
     steps:
     - name: Checkout repository
