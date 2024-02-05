@@ -1,7 +1,7 @@
 # Use an official Nginx runtime as a base image
 FROM nginx:latest
 
-# Create a simple index.html file with "<h1>Hello World</h1>" content
+# Create a simple index.html
 RUN echo '<h1>Hello World</h1>' > /usr/share/nginx/html/index.html
 
 # Install curl
