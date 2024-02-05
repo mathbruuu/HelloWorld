@@ -38,9 +38,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Show container logs
-      run: docker logs ${{ needs.build.outputs.docker-container }}
-
     - name: Test Docker image
       run: |
         echo "Waiting for the container to start..."
