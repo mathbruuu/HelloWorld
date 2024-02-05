@@ -37,7 +37,7 @@ jobs:
       id: docker-container
 
     - name: Wait for the container to start
-      run: sleep 10
+      run: sleep 30
       
   test:
     needs: build
