@@ -45,14 +45,5 @@ jobs:
     - name: Test App in Container
       id: test
       run: curl -v http://localhost:8080/
-        
-    - name: Test Docker image
-      run: |
-        echo "Waiting for the container to start..."
-        sleep 10
 
-        echo "Checking HTTP response code..."
-        response_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:80)
-        
-        echo $response_code
-  
+
