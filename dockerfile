@@ -7,8 +7,8 @@ RUN echo '<h1>Hello World</h1>' > /usr/share/nginx/html/index.html
 # Install curl
 RUN apt-get update && apt-get install -y curl
 
-# Expose port 80 to the outside world
-EXPOSE 80
+# Expose port 8080 to the outside world
+EXPOSE 8080
 
 # Command to run when the container starts
 CMD ["nginx", "-g", "daemon off;"]
