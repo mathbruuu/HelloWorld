@@ -38,6 +38,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check Docker Container
+      id: check  
+      run: docker ps
+      
+    - name: Test App in Container
+      id: test
+      run: curl -v http://localhost:8080/
+        
     - name: Test Docker image
       run: |
         echo "Waiting for the container to start..."
