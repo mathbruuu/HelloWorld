@@ -34,7 +34,7 @@ jobs:
       run: docker image build -t helloworld:latest .
 
     - name: Install curl in the Docker container
-      run: docker exec -it helloworld apt-get update && apt-get install -y curl
+      run: docker exec -it helloworld:latest apt-get update && apt-get install -y curl
 
     - name: Test Docker image
       run: | 
