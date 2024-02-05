@@ -12,35 +12,34 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      
+
     - name: Use Node.js 20
       uses: actions/setup-node@v3
       with:
         node-version: 20
-        
+
     - name: Build Docker image
       run: docker image build -t helloworld:latest .
-      
-    - name: Run Docker container
-      run: docker run -p 8080:80 helloworld
+
+    - name: Run Docker container in detached mode
+      run: docker run -d -p 8080:80 helloworld
       id: docker-container
-      env:
-        DOCKER_BUILDKIT: 1
-      
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Show container logs
-      run: docker logs ${{ steps.docker-container.outputs.container_id }}
+      run: docker logs ${{ needs.build.outputs.docker-container }}
 
     - name: Test Docker image
       run: |
