@@ -29,6 +29,9 @@ jobs:
     - name: Build Docker image
       run: docker image build -t helloworld:latest .
 
+    - name: kill other containers
+      run: docker kill $(docker ps -q)
+
     - name: Run Docker container in detached mode
       run: docker run -d -p 8080:8080 helloworld
       id: docker-container
