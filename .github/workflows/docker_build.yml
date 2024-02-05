@@ -44,6 +44,10 @@ jobs:
       id: test
       run: curl -v http://localhost:8080/
 
+    - name: RECheck Docker Container
+      id: check2
+      run: docker ps
+
 
 
 
