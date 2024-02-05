@@ -34,5 +34,17 @@ jobs:
       run: docker image build -t helloworld:latest .
 
     - name: Test Docker image
-      run: docker run -p 8080:80 helloworld
+      run: | 
+        docker run -p 8080:80 helloworld
+
+        slee(10)
+        response_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
+        if [ $response_code -eq 200 ]; then
+          echo "Docker container is responding successfully."
+        else
+          echo "Error: Docker container did not respond as expected."
+          exit 1
+        fi
+
+      
 
