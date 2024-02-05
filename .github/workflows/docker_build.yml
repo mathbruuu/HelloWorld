@@ -33,6 +33,9 @@ jobs:
       run: docker run -d -p 8080:8080 helloworld
       id: docker-container
 
+    - name: Wait for the container to start
+      run: sleep 30
+
   test:
     needs: build
     runs-on: ubuntu-latest
