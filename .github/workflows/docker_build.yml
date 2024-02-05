@@ -43,7 +43,7 @@ jobs:
     
     steps:
     - name: Install cURL
-      run: apt-get install curl
+      run:  apt-get update && apt-get install -y curl
       
     - name: Test App in Container
       id: test
