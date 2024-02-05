@@ -31,7 +31,8 @@ jobs:
         node-version: 20
           
     - name: Build Docker image
-      run: docker build -t docker .
+      run: docker image build -t helloworld:latest .
 
     - name: Test Docker image
-      run: docker run docker
+      run: docker run -p 8080:80 helloworld
+
