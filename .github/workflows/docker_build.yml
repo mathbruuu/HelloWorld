@@ -39,7 +39,6 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container: ubuntu
     
     steps:
     - name: Install cURL
