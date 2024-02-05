@@ -29,9 +29,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 20
-          
+        
+    - name: Build Docker image
+      run: docker image build -t helloworld:latest .
+      
     - name: Run Docker container
-      run: docker run -d -p 8080:80 helloworld
+      run: docker run -p 8080:80 helloworld
       id: docker-container
 
     - name: Install curl in the Docker container
