@@ -27,7 +27,7 @@ jobs:
         node-version: 20
 
     - name: Build Docker image
-      run: docker image build -t helloworld:latest .
+      run: docker image build -d -t helloworld:latest .
 
     - name: Run Docker container in detached mode
       run: docker run -p 8080:8080 helloworld
