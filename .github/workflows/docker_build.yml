@@ -30,7 +30,7 @@ jobs:
       run: docker image build -t helloworld:latest .
 
     - name: Run Docker container in detached mode
-      run: docker run -d -p 8080:80 helloworld
+      run: docker run -d -p 8080:8080 helloworld
       id: docker-container
 
   test:
