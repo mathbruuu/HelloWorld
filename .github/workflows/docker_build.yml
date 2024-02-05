@@ -16,14 +16,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu
-
-    services:
-      docker:
-        image: docker:20.10.10
-        ports:
-          - 8080:8080
-        options: --entrypoint "dockerd-entrypoint.sh"
     
     steps:
     - name: Checkout repository
@@ -47,16 +39,11 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
+    container: ubuntu
     
     steps:
-    - name: Check Docker Container
-      id: check  
-      run: docker ps
       
     - name: Test App in Container
       id: test
       run: curl -v http://localhost:8080/
 
-    - name: RECheck Docker Container
-      id: check2
-      run: docker ps
