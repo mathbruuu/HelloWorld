@@ -54,11 +54,18 @@ jobs:
       run: |
         wget --retry-connrefused --waitretry=1 --timeout=30 --tries=3 http://172.17.0.2
         
-  security_test:
-    needs: test_if_container_respond
-    runs-on: self-hosted
+ security_test:
+  needs: test_if_container_respond
+  runs-on: self-hosted
 
-    steps:
+  steps:
     - name: Use ZAP Docker image
       run: |
         docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2:8080 -g gen.conf -r report.html
+    - name: Display ZAP scan report
+      run: cat report.html
+    - name: Upload ZAP report
+      uses: actions/upload-artifact@v2
+      with:
+        name: zap-report
+        path: report.html
