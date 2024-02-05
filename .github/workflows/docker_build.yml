@@ -60,7 +60,9 @@ jobs:
 
     steps:
     - name: Install ZAP
-      run: sudo apt-get install -y zaproxy
+      run: |
+        sudo apt-get install -y zaproxy > zap_installation_log.txt 2>&1
+        cat zap_installation_log.txt  # Affiche les logs d'installation
 
     - name: Run ZAP DAST
       run: zap-full-scan.py -t http://172.17.0.2 -r report.html
