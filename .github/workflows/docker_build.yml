@@ -16,7 +16,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu
     
     steps:
     - name: Checkout repository
@@ -36,18 +35,23 @@ jobs:
 
     - name: Wait for the container to start
       run: sleep 10
-
-    - name: Check Docker Container
-      id: check  
-      run: docker ps
       
-    - name: Test App in Container
-      id: test
-      run: curl -v http://localhost:8080/
+test:
+  needs: build
+  runs-on: ubuntu-latest
+    
+  steps:
+  - name: Check Docker Container
+    id: check  
+    run: docker ps
+      
+  - name: Test App in Container
+    id: test
+    run: curl -v http://localhost:8080/
 
-    - name: RECheck Docker Container
-      id: check2
-      run: docker ps
+  - name: RECheck Docker Container
+    id: check2
+    run: docker ps
 
 
 
