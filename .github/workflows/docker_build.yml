@@ -40,7 +40,10 @@ jobs:
     needs: build
     runs-on: self-hosted
     
-    steps:      
+    steps:
+    - name: Check if container run
+      run: docker ps
+      
     - name: Test App in Container
       id: test
       run: curl -v http://localhost:8080/
