@@ -34,13 +34,8 @@ jobs:
       id: docker-container
 
     - name: Wait for the container to start
-      run: sleep 30
+      run: sleep 10
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Check Docker Container
       id: check  
       run: docker ps
@@ -48,5 +43,7 @@ jobs:
     - name: Test App in Container
       id: test
       run: curl -v http://localhost:8080/
+
+
 
 
