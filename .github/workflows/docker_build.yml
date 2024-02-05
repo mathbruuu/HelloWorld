@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [main]
+    branches: []
   pull_request:
     branches: [main]
 
@@ -39,7 +39,7 @@ jobs:
     - name: Wait for the container to start
       run: sleep 30
       
-  test:
+  test_if_container_respond:
     needs: build
     runs-on: self-hosted
     
@@ -53,6 +53,16 @@ jobs:
       id: test
       run: |
         wget --retry-connrefused --waitretry=1 --timeout=30 --tries=3 http://172.17.0.2
+        
+  security_test:
+    needs: test_if_container_respond
+    runs-on: self-hosted
 
+    steps:
+    - name: Install OWASP ZAP
+      run: |
+        wget -q -O - https://raw.githubusercontent.com/zaproxy/zaproxy/develop/docker/docker-compose.yaml | docker-compose -f - up -d
 
-
+    - name: Run OWASP ZAP (DAST)
+      run: |
+        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2:8080 -g gen.conf -r report.html
