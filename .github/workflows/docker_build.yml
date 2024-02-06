@@ -68,9 +68,6 @@ jobs:
 
       - name: Install tools
         run: |
-            apt install zaproxy 
-            apt install wapiti 
-            apt install skipfish
-            apt install nikto
-            apt install nuclei
+          sudo apt update
+          sudo apt install -y zaproxy wapiti skipfish nikto nuclei
       
