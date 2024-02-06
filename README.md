@@ -19,7 +19,16 @@ you have to execute this command on the root of the repository
 
 ## If you want to reuse it on your own project you have some changes to do 
 
-- https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
+- go to https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
+
+- Update these line
+- 
+      - name: Build the Docker image
+        run: |
+          docker build . --tag ghcr.io/<YOUR_USERNAME>/<NAME_OF_YOUR_IMAGE>:latest
+          docker push ghcr.io/<YOUR_USERNAME>/<NAME_OF_YOUR_IMAGE>:latest
+
+  
 
 
 
