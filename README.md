@@ -13,5 +13,5 @@ you have to execute this command on the root of the repository
   
 - https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml will be trigger on new release and will publish the image on the github registry
   
--  docker pull ghcr.io/mathbruuu/day2daytestting:latest the image can be pull with this command
+- The command to pull the image is : "docker pull ghcr.io/mathbruuu/day2daytestting:latest"
 
