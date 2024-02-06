@@ -1,9 +1,14 @@
 # HelloWorld
-## Create self host runner
-https://github.com/mathbruuu/HelloWorld/settings/actions/runners/new?arch=x64&os=linux
 
 ## Activate hook
-git config core.hooksPath .githooks
 
-## host docker image on github registry
-https://docs.github.com/en/packages/quickstart
+you have to execute this command on the root of the repository
+'''
+git config core.hooksPath .githooks
+'''
+
+## How to reuse this project ?
+
+- .github/workflows/docker_build.yml will be trigger at every push on the main branch, you just have to push on the main branch
+- The docker image will be build based on the dockerfile, the dockerfile is a simple container with a nginx server hosting a "hello world" page
+
