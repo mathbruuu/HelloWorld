@@ -21,7 +21,7 @@ you have to execute this command on the root of the repository
 
 - go to https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
 
-- Update these line
+- Update these line with your own informations
 - 
       - name: Build the Docker image
         run: |
