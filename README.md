@@ -17,3 +17,5 @@ you have to execute this command on the root of the repository
 
 - Accessible here  : https://github.com/mathbruuu/HelloWorld/pkgs/container/day2daytestting
 
+## If you want to reuse it on your own project you have some changes to do
+
