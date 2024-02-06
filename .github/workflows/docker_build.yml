@@ -14,7 +14,7 @@ on:
   
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
@@ -39,7 +39,6 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build . --tag ghcr.io/mathbruuu/day2daytestting:latest
-          docker run ghcr.io/mathbruuu/day2daytestting:latest
           docker push ghcr.io/mathbruuu/day2daytestting:latest
        
       - name: Kill other containers
