@@ -30,7 +30,7 @@ jobs:
 
     - name: kill other containers
       run: |
-          if docker ps -q ; then
+          if [ "$(docker ps -q)" ]; then
             docker kill $(docker ps -q)
           else
             echo "No running Docker containers."
