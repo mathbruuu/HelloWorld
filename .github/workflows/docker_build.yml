@@ -26,7 +26,11 @@ jobs:
         node-version: 20
 
     - name: Build Docker image
-      run: docker image build -t helloworld:latest .
+      run: |
+        docker build -t helloworld:latest .
+        docker tag helloworld:latest ghcr.io/mathbruuu/day2dayDocker:latest
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker push ghcr.io/mathbruuu/day2dayDocker:latest
 
     - name: kill other containers
       run: |
