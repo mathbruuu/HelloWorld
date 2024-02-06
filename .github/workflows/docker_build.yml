@@ -1,12 +1,11 @@
 # This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: []
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -30,14 +29,19 @@ jobs:
       run: docker image build -t helloworld:latest .
 
     - name: kill other containers
-      run: docker kill $(docker ps -q)
+      run: |
+          if [ "$(docker ps -q)" ]; then
+            docker kill $(docker ps -q)
+          else
+            echo "No running Docker containers."
+          fi
 
     - name: Run Docker container in detached mode
       run: docker run -d -p 8080:8080 helloworld
       id: docker-container
 
     - name: Wait for the container to start
-      run: sleep 30
+      run: sleep 5
       
   test_if_container_respond:
     needs: build
@@ -59,10 +63,23 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Install OWASP ZAP
-      run: |
-        wget -q -O - https://raw.githubusercontent.com/zaproxy/zaproxy/develop/docker/docker-compose.yaml | docker-compose -f - up -d
+      - name: Install dependancie
+        run: pip install customtkinter jinja2 pillow matplotlib beautifulsoup4 
 
-    - name: Run OWASP ZAP (DAST)
-      run: |
-        docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2:8080 -g gen.conf -r report.html
+      - name: Install tools
+        run: |
+          sudo apt install -y zaproxy wapiti skipfish nikto nuclei
+          
+      - name: use ZAP
+        run: |
+          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2 -g gen.conf -r /zap/wrk/report.html -i Low
+          docker cp $(docker ps -lq):/zap/wrk/report.html ./report.html
+      
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: zap-report
+          path: ./report.html
+
+
+
