@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Function to check the syntax of a Dockerfile
+check_dockerfile_syntax() {
+    dockerfile="$1"
+    dockerfile_syntax_check=$(docker --quiet build -f "$dockerfile" -t test_image . 2>&1)
+    if [ $? -ne 0 ]; then
+        echo "Error: Syntax check failed for dockerfile: $dockerfile"
+        echo "$dockerfile_syntax_check"
+        exit 1
+    fi
+}
+
+# Check syntax for all Dockerfiles in the repository
+for dockerfile in $(git diff --cached --name-only --diff-filter=ACM | grep -E '^.*dockerfile$'); do
+    check_dockerfile_syntax "$dockerfile"
+done
+
+exit 0
