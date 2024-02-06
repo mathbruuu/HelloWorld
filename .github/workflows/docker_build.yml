@@ -63,13 +63,14 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Use ZAP Docker image
+      - name: Install dependancie
+        run: pip install customtkinter jinja2 pillow matplotlib beautifulsoup4 
+
+      - name: Install tools
         run: |
-          docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2 -g gen.conf -r report.html
-      - name: Display ZAP scan report
-        run: cat report.html
-      - name: Upload ZAP report
-        uses: actions/upload-artifact@v2
-        with:
-          name: zap-report
-          path: report.html
+            sudo apt install zaproxy 
+            sudo apt install wapiti 
+            sudo apt install skipfish
+            sudo apt install nikto
+            sudo apt install nuclei
+      
