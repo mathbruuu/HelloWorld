@@ -72,4 +72,10 @@ jobs:
           
       - name: use ZAP
         run: docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2 -g gen.conf -r report.html -i Low
+      
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: zap-report
+          path: ./report.html
 
