@@ -15,3 +15,5 @@ you have to execute this command on the root of the repository
   
 - The command to pull the image is : "docker pull ghcr.io/mathbruuu/day2daytestting:latest"
 
+- Accessible here  : https://github.com/mathbruuu/HelloWorld/pkgs/container/day2daytestting
+
