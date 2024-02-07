@@ -32,12 +32,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Import private key
+      - name: Déchiffrer la clé privée
         run: |
-            echo "${{ secrets.DOCKER_TRUST_PRIVATE_KEY }}" > private_key.asc
-            gpg --batch --import private_key.asc
-            rm private_key.asc
-        
+          echo "${{ secrets.DOCKER_TRUST_PRIVATE_KEY }}" > private_key_encrypted.asc
+          echo "${{ secrets.PASSPHRASE }}" > passphrase.txt
+          gpg --batch --passphrase-file passphrase.txt --decrypt private_key_encrypted.asc > private_key_decrypted.asc
+          rm private_key_encrypted.asc passphrase.txt
+      
       - name: Sign Docker image
         run: docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
         
