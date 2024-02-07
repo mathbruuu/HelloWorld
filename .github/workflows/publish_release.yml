@@ -32,20 +32,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate Docker trust root key
-        run: |
-          docker trust key generate mathbruuu-day2daytestting
-          if [ $? -ne 0 ]; then
-            exit 1
-          fi
-          
-      - name: Sign Docker image
-        run: |
-          docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
-          if [ $? -ne 0 ]; then
-            exit 1
-          fi
-
       - name: Push the Docker image
         run: |
           docker push ghcr.io/mathbruuu/day2daytestting:latest
