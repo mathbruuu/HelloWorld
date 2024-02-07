@@ -32,11 +32,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Sign Docker image
-        env:
-          SIGNING_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
-        run: |
-          docker sign ghcr.io/mathbruuu/day2daytestting:latest --key $SIGNING_PRIVATE_KEY
 
       - name: Push the Docker image
         run: |
