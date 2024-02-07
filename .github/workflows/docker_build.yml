@@ -63,14 +63,7 @@ jobs:
     needs: test_if_container_respond
     runs-on: self-hosted
 
-    steps:
-      - name: Install dependencies
-        run: pip install customtkinter jinja2 pillow matplotlib beautifulsoup4 
-
-      #- name: Install tools
-      # run: |
-      #   sudo apt install -y zaproxy wapiti skipfish nikto nuclei
-          
+    steps:        
       - name: Use ZAP
         run: |
           docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://172.17.0.2 -g gen.conf -r /zap/wrk/report.html -i Low
