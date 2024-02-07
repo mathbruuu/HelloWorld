@@ -18,6 +18,15 @@ jobs:
         with:
           node-version: 20
 
+      - name: Build the Docker image
+        run: |
+          docker build . --tag ghcr.io/mathbruuu/day2daytestting:latest
+          
+      # Ajouter l'étape de signature de l'image avant la publication
+      - name: Sign Docker image
+        run: |
+          docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
@@ -25,7 +34,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build the Docker image
+      - name: Push the Docker image
         run: |
-          docker build . --tag ghcr.io/mathbruuu/day2daytestting:latest
           docker push ghcr.io/mathbruuu/day2daytestting:latest
