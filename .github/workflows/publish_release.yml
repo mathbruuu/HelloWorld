@@ -34,7 +34,7 @@ jobs:
 
       - name: Generate Docker trust root key
         run: |
-          docker trust key generate ghcr.io/mathbruuu/day2daytestting
+          docker trust key generate mathbruuu-day2daytestting
           if [ $? -ne 0 ]; then
             exit 1
           fi
