@@ -14,7 +14,7 @@ on:
   
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
@@ -46,7 +46,7 @@ jobs:
       
   test_if_container_respond:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
       - name: Check if container run
@@ -61,7 +61,7 @@ jobs:
         
   security_test:
     needs: test_if_container_respond
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Install dependencies
