@@ -6,6 +6,8 @@ on:
 jobs:
   push_to_registry:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_CONTENT_TRUST: 1
     permissions:
       contents: read
       packages: write
