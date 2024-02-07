@@ -32,12 +32,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Déchiffrer la clé privée
+      - name: Sign Docker image
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
         run: |
-          echo "${{ secrets.DOCKER_TRUST_PRIVATE_KEY }}" > private_key.key
-          echo "${{ secrets.PASSPHRASE }}" > passphrase.txt
-          gpg --batch --passphrase-file passphrase.txt --import private_key.key
-          rm private_key.key passphrase.txt
+          docker sign your-image-name:latest --key $SIGNING_KEY
+          # You may need to use additional commands depending on the signing tool you're using
+
 
       
       - name: Sign Docker image
