@@ -46,7 +46,7 @@ jobs:
       
   test_if_container_respond:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     
     steps:
       - name: Check if container run
@@ -61,7 +61,7 @@ jobs:
         
   security_test:
     needs: test_if_container_respond
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Install dependencies
