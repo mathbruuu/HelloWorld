@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Import private key
-        run: echo ${{secrets.SIGNING_KEY}} | gpg --import
+        run: echo "${{ secrets.SIGNING_KEY }}" | gpg --import
 
       - name: Sign Docker image
         run: docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
