@@ -1,5 +1,9 @@
 # HelloWorld
 
+## Self host runner
+For this project, I self host my runner, if you want to self host your runner 
+settings > actions > runner > new self host runner ( follow the instructions there)
+
 ## Activate hook
 
 you have to execute this command on the root of the repository
