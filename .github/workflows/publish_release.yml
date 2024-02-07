@@ -21,6 +21,9 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build . --tag ghcr.io/mathbruuu/day2daytestting:latest
+          if [ $? -ne 0 ]; then
+            exit 1
+          fi
     
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
@@ -29,10 +32,23 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Docker trust root key
+        run: |
+          docker trust key generate ghcr.io/mathbruuu/day2daytestting
+          if [ $? -ne 0 ]; then
+            exit 1
+          fi
+          
       - name: Sign Docker image
         run: |
           docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
+          if [ $? -ne 0 ]; then
+            exit 1
+          fi
 
       - name: Push the Docker image
         run: |
           docker push ghcr.io/mathbruuu/day2daytestting:latest
+          if [ $? -ne 0 ]; then
+            exit 1
+          fi
