@@ -34,7 +34,7 @@ jobs:
 
       - name: Import private key
         run: |
-            echo "${{ secrets.SIGNING_KEY }}" > private_key.asc
+            echo "${{ secrets.DOCKER_TRUST_PRIVATE_KEY }}" > private_key.asc
             gpg --batch --import private_key.asc
             rm private_key.asc
         
