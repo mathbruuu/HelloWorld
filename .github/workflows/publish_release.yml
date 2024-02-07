@@ -32,9 +32,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Import private key
-        run: echo "$SIGNING_KEY" | gpg --import
-
+      - name: Check SIGNING_KEY secret
+        run: echo "${{ secrets.SIGNING_KEY }}"
+        
       - name: Sign Docker image
         run: docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
         
