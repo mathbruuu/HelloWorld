@@ -22,14 +22,14 @@ jobs:
             password: ${{ secrets.DOCKER_REPO_PASSWORD }}
         - name: Build action image
           # Use any good build command and be sure to tag the image correctly
-          run: docker build . --tag ghcr.io/mathbruuu/day2daytestting:latest
+          run: docker build . --tag mathbruu/day2day:latest
           env:
-            IMAGE_TAG: "ghcr.io/mathbruuu/day2daytestting:latest"
+            IMAGE_TAG: "mathbruu/day2day:latest"
 
         - name: Sign and push docker image
           uses: sudo-bot/action-docker-sign@latest
           with:
-            image-ref: "ghcr.io/mathbruuu/day2daytestting:latest"
+            image-ref: "mathbruu/day2day:latest"
             # Example: 51f9a39f3db4ddaaf9174fca69f41fb01a04a4dfb5125ef115feecb93d19efa6
             private-key-id: "${{ secrets.DOCKER_PRIVATE_KEY_ID }}"
             # The contents from: ~/.docker/trust/private/51f9a39f3db4ddaaf9174fca69f41fb01a04a4dfb5125ef115feecb93d19efa6.key)
