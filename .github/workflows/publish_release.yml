@@ -26,13 +26,7 @@ jobs:
           if [ $? -ne 0 ]; then
             exit 1
           fi
-          
-      - name: Sign the Docker image
-        run: |
-          echo "Enter passphrase for root key with ID 545b575:"
-          read -s PASSPHRASE
-          echo "${PASSPHRASE}" | docker trust sign ghcr.io/mathbruuu/day2daytestting:latest
-          
+                  
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
