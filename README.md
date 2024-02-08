@@ -34,6 +34,8 @@ Create a new release here, the publish_release.yml will be trigger and the image
 ## If you want to reuse it on your own project you have some changes to do 
 
 Adapte mathbruu/day2day with your own repository on dockerhub (dockerHub_namespace/dockerHub_Repository)
+
+
 - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
