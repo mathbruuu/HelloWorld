@@ -12,10 +12,9 @@
 
 - it's an example you can implement others tools like https://github.com/OSTEsayed/OSTE-Meta-Scan
 
-# publish_release.yml
+# publish_dockerHub_githubRegistry.yml
 - this pipeline will be trigger when we published a new version of the project
-- it will publish the docker image on the github registry
-- https://github.com/mathbruuu/HelloWorld/pkgs/container/day2daytestting
+- it will publish the docker image on the github registry and dockerhub 
 
 
 
