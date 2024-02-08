@@ -4,10 +4,8 @@ permissions:
   contents: read
 
 on:
-  push:
-    tags:
-       # Only the tag named latest
-       - 'latest'
+  release:
+    types: [published]
 
 jobs:
   push-to-registry:
