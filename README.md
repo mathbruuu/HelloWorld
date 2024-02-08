@@ -28,15 +28,21 @@ Create a new release here, the publish_release.yml will be trigger and the image
 
 ## If you want to reuse it on your own project you have some changes to do 
 
-- go to https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
+https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
 
-- Update these line with your own informations
-- 
-      - name: Build the Docker image
-        run: |
-          docker build . --tag ghcr.io/<YOUR_USERNAME>/<NAME_OF_YOUR_IMAGE>:latest
-          docker push ghcr.io/<YOUR_USERNAME>/<NAME_OF_YOUR_IMAGE>:latest
-
+créer compte docker 
+stocker sur github secret 
+	DOCKER_REPO_LOGIN
+	DOCKER_REPO_PASSWORD
+ 
+Adapte mathbruu/day2day with your own repository on dockerhub (dockerHub_namespace/dockerHub_Repository)
+- name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: |
+            mathbruu/day2day
+            ghcr.io/${{ github.repository }}
   
 
 
