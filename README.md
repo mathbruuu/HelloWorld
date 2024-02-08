@@ -35,13 +35,14 @@ Create a new release here, the publish_release.yml will be trigger and the image
 
 Adapte mathbruu/day2day with your own repository on dockerhub (dockerHub_namespace/dockerHub_Repository)
 
-''' name: Extract metadata (tags, labels) for Docker
+ name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
           images: |
             mathbruu/day2day
-            ghcr.io/${{ github.repository }} ''' 
+            ghcr.io/${{ github.repository }} 
+	    
 
 
   After pulling the image from registry you can verify if the digest of the image match with the digest on the registry
