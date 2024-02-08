@@ -24,7 +24,7 @@ jobs:
           # Use any good build command and be sure to tag the image correctly
           run: docker build . --tag ghcr.io/mathbruuu/day2daytestting:latest
           env:
-            IMAGE_TAG: "docker.io/botsudo/action-docker-compose:latest"
+            IMAGE_TAG: "ghcr.io/mathbruuu/day2daytestting:latest"
 
         - name: Sign and push docker image
           uses: sudo-bot/action-docker-sign@latest
