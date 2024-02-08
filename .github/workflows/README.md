@@ -1,7 +1,7 @@
 # https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_docker_sign.yml
 Is not used I just let it for informations. Allow to sign a image with docker and publish it on dockerhub (Useless because the image is automaticaly sign by github)
 
-https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
+# https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
 Is not used I just let it for informations. Allow to publish a image to github registry (is automaticaly signed by github)
 
 # publish_dockerHub_githubRegistry.yml
