@@ -15,8 +15,8 @@ you have to execute this command on the root of the repository
 
 https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
 
-create dockerhub account
-stocker sur github secret 
+- create dockerhub account
+- save on github secrets
 	DOCKER_REPO_LOGIN
 	DOCKER_REPO_PASSWORD
  
