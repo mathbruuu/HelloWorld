@@ -1,5 +1,7 @@
 # https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_docker_sign.yml
-- Is not used I just let it for informations. Allow to sign a image with docker and publish it on dockerhub (Useless because the image is automaticaly sign by github)
+
+- https://docs.docker.com/engine/security/trust/
+- Is not used I just let it for informations. Allow to sign a image with docker and publish it on dockerhub 
 
 - Create a dockerhub repo
 - docker trust key generate NAME
@@ -8,7 +10,7 @@
 - - If you want to use it, create the secret variable, generate docker key and add it in github secret (DOCKER_PRIVATE_KEY_ID, DOCKER_PRIVATE_KEY, DOCKER_PRIVATE_KEY_PASSPHRASE)
   
 # https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
-Is not used I just let it for informations. Allow to publish a image to github registry (is automaticaly signed by github)
+Is not used I just let it for informations. Allow to publish a image to github registry
 
 # publish_dockerHub_githubRegistry.yml
 - this pipeline will be trigger when we published a new version of the project
