@@ -1,5 +1,4 @@
-name: Publish Docker image on tag push
-
+name: Publish Docker image and sign it
 permissions:
   contents: read
 
