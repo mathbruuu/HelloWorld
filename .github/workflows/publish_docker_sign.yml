@@ -21,7 +21,7 @@ jobs:
             password: ${{ secrets.DOCKER_REPO_PASSWORD }}
         - name: Build action image
           # Use any good build command and be sure to tag the image correctly
-          run: docker build . --tag mathbruu/day2day:latest
+          run: docker build . --tag mathbruu/testing:latest
           env:
             IMAGE_TAG: "mathbruu/day2day:latest"
 
