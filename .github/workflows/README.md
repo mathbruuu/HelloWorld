@@ -9,7 +9,7 @@
 - private key is stored ~/.docker/trust/private
 - - If you want to use it, create the secret variable, generate docker key and add it in github secret (DOCKER_PRIVATE_KEY_ID, DOCKER_PRIVATE_KEY, DOCKER_PRIVATE_KEY_PASSPHRASE)
    
-- export DOCKER_CONTENT_TRUST=1 (allow to pull only signed images)
+- export DOCKER_CONTENT_TRUST=1 (allow to pull only signed images) (exported only for the user)
 - docker trust inspect docker.io/mathbruu/testing:latest --pretty (see if image is signed)
 
   
