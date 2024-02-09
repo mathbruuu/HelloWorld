@@ -8,6 +8,8 @@
 - docker trust signer add --key key.pub mathbruuu docker.io/mathbruu/day2day
 - private key is stored ~/.docker/trust/private
 - - If you want to use it, create the secret variable, generate docker key and add it in github secret (DOCKER_PRIVATE_KEY_ID, DOCKER_PRIVATE_KEY, DOCKER_PRIVATE_KEY_PASSPHRASE)
+   
+- export DOCKER_CONTENT_TRUST=1 (allow to pull only signed images)
   
 # https://github.com/mathbruuu/HelloWorld/blob/main/.github/workflows/publish_release.yml
 Is not used I just let it for informations. Allow to publish a image to github registry
